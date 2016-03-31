@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+	<xacro:macro name="ar600_palm_finger_macro" params="parent side otherside reflect index *origin">
+		<link name="${side}f${index}1">
+			<visual>					
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/finger_segment.dae"/>
+				</geometry>			
+			</visual>
+			<inertial>
+				<mass value="0.05"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					           iyy="1.0" iyz="0.0" 
+					                     izz="1.0"/>
+			</inertial>
+			<collision>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/finger_segment.stl"/>
+				</geometry>
+			</collision>
+		</link>
+
+		<link name="${side}f${index}2">
+			<visual>			
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/finger_segment.dae"/>
+				</geometry>					
+			</visual>
+			<inertial>
+				<mass value="0.05"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					           iyy="1.0" iyz="0.0" 
+					                     izz="1.0"/>
+				</inertial>
+		    <collision>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/finger_segment.stl"/>
+				</geometry>				
+			</collision>
+		</link>
+
+		<link name="${side}f${index}3">
+			<visual>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/finger_segment.dae"/>
+				</geometry>			
+			</visual>
+			<inertial>
+				<mass value="0.05"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					           iyy="1.0" iyz="0.0" 
+					                     izz="1.0"/>
+			</inertial>
+			<collision>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/finger_segment.stl"/>
+				</geometry>			
+			</collision>
+		</link>
+
+		<link name="${side}f${index}4">
+			<visual>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/finger_tip.dae"/>
+				</geometry>					
+			</visual>
+			<inertial>
+				<mass value="0.05"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					           iyy="1.0" iyz="0.0" 
+					                     izz="1.0"/>
+				</inertial>
+			<collision>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/finger_segment.stl"/>
+				</geometry>			
+			</collision>
+		</link>
+
+		<joint name="${side}_palm_f${index}" type="fixed">
+			<parent link="${parent}"/>
+			<child link="${side}f${index}1"/>	
+			<xacro:insert_block name="origin"/>			
+		</joint>
+
+		<joint name="${side}_f${index}1_f${index}2" type="revolute">
+			<parent link="${side}f${index}1"/>
+			<child link="${side}f${index}2"/>	
+			<origin xyz="0 0 -0.02" rpy="0 0 0"/>	
+			<limit effort="1000.0" lower="0" upper="0.707" velocity="0.5"/>
+			<axis xyz="${-1*reflect} 0 0"/>
+		</joint>
+
+		<joint name="${side}_f${index}2_f${index}3" type="revolute">
+			<parent link="${side}f${index}2"/>
+			<child link="${side}f${index}3"/>	
+			<origin xyz="0 0 -0.02" rpy="0 0 0"/>	
+			<limit effort="1000.0" lower="0" upper="0.707" velocity="0.5"/>
+			<axis xyz="${-1*reflect} 0 0"/>
+		</joint>
+
+		<joint name="${side}_f${index}3_f${index}4" type="revolute">
+			<parent link="${side}f${index}3"/>
+			<child link="${side}f${index}4"/>	
+			<origin xyz="0 0 -0.02" rpy="0 0 0"/>	
+			<limit effort="1000.0" lower="0" upper="0.707" velocity="0.5"/>
+			<axis xyz="${-1*reflect} 0 0"/>
+		</joint>
+
+	</xacro:macro>
+</robot>

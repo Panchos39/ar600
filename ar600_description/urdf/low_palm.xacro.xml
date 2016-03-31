@@ -1,0 +1,135 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ar600">
+	
+	<xacro:macro name="box_shape" params="size">
+		<geometry>
+			<box size="${size}"/>	
+		</geometry>		
+	</xacro:macro>
+
+	<xacro:macro name="cylinder_shape" params="radius length">
+		<geometry>
+			<cylinder radius="${radius}" length="${length}"/>	
+		</geometry>		
+	</xacro:macro>	
+
+		<xacro:macro name="white_material">
+				<material name="white">
+					<color rgba="1 1 1 1"/>
+				</material>
+	</xacro:macro>
+
+<xacro:macro name="palm" params="prefix reflect">
+	<link name="${prefix}_palm">
+		<visual>
+			<geometry>
+				<mesh filename="package://ar600_description/meshes/${prefix}_palm.dae"/>
+			</geometry>
+			
+			<xacro:white_material/>
+		</visual>
+		<inertial>
+			<mass value="0.1"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>		
+		<collision>
+			<geometry>
+				<mesh filename="package://ar600_description/meshes/${prefix}_palm.dae"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<!-- <link name="${prefix}bigfingerseg1">
+		<visual>
+			<xacro:box_shape size=".02 .01 .03"/>
+			<origin xyz="0 0 -0.015" rpy="0 0 0"/>			
+			<xacro:white_material/>
+		</visual>
+		<inertial>s
+			<mass value="0.05"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+		<collision>
+			<xacro:box_shape size=".02 .01 .03"/>
+			<origin xyz="0 0 -0.015" rpy="0 0 0"/>
+		</collision>
+	</link>
+
+
+
+	<link name="${prefix}bigfingerseg2">
+		<visual>
+			<xacro:box_shape size=".02 .01 .03"/>
+			<origin xyz="0 0 -0.015" rpy="0 0 0"/>
+			<xacro:white_material/>
+		</visual>
+		<inertial>
+			<mass value="0.05"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+		<collision>
+			<xacro:box_shape size=".02 .01 .03"/>
+			<origin xyz="0 0 -0.015" rpy="0 0 0"/>
+		</collision>
+	</link>
+
+	<link name="${prefix}bigfingerseg3">
+		<visual>
+			<xacro:box_shape size=".02 .01 .02"/>
+			<origin xyz="0 0 -0.01" rpy="0 0 0"/>
+			<xacro:white_material/>
+		</visual>
+		<inertial>
+			<mass value="0.05"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+		<collision>
+			<xacro:box_shape size=".01 .01 .01"/>
+			<origin xyz="0 0 -0.005" rpy="0 0 0"/>
+		</collision>
+	</link> -->
+
+
+
+
+
+	<joint name="${prefix}_arm_${prefix}_palm" type="fixed">
+		<parent link="${prefix}_hand_pad"/>
+		<child link="${prefix}_palm"/>	
+		<origin xyz="0 0 0.01" rpy="0 0 0"/>			
+	</joint>
+
+	<joint name="${prefix}_palm_thumb1" type="revolute">
+		<parent link="${prefix}_palm"/>
+		<child link="${prefix}bigfingerseg1"/>	
+		<origin xyz="${-0.02*reflect} -0.025 -0.04" rpy="0 0 0"/>
+		<limit effort="1000.0" lower="-0.5" upper="0.707" velocity="0.5"/>
+		<axis xyz="0 ${-reflect} 0"/>
+		<dynamics damping="20000.0" />
+	</joint>
+
+
+	<joint name="${prefix}_thumb1_thumb2" type="revolute">
+		<parent link="${prefix}bigfingerseg1"/>
+		<child link="${prefix}bigfingerseg2"/>	
+		<origin xyz="0 0 -0.03" rpy="0 0 0"/>	
+		<limit effort="1000.0" lower="0" upper="0.707" velocity="0.5"/>
+		<axis xyz="0 ${-reflect} 0"/>
+		<dynamics damping="20000.0" />
+	</joint>
+
+
+	<joint name="${prefix}_thumb2_thumb3" type="revolute">
+		<parent link="${prefix}bigfingerseg2"/>
+		<child link="${prefix}bigfingerseg3"/>	
+		<origin xyz="0 0 -0.02" rpy="0 0 0"/>	
+		<limit effort="1000.0" lower="0" upper="0.707" velocity="0.5"/>
+		<axis xyz="0 ${-reflect} 0"/>
+		<dynamics damping="20000.0" />
+	</joint>
+
+</xacro:macro>
+
+	<xacro:palm prefix="right" reflect="-1"/>
+	<xacro:palm prefix="left" reflect="1"/>
+
+</robot>

@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	
+	<xacro:include filename="$(find ar600_description)/urdf/leg/leg.gazebo.xacro" />
+  	<xacro:include filename="$(find ar600_description)/urdf/leg/leg.transmission.xacro" />
+
+	<xacro:macro name="ar600_leg_macro" params="parent side reflect *origin">
+
+		<link name="base_${side}_hip">
+			<visual>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/${side}_base_leg_low.dae"/>
+				</geometry>		
+			</visual>	
+			<inertial>
+				<mass value="5"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					 		   iyy="1.0" iyz="0.0" 
+					 		             izz="1.0"/>
+			</inertial>					
+		</link>
+
+		<link name="${side}_hip_mount">		
+			<inertial>
+				<mass value="1"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+						       iyy="1.0" iyz="0.0" 
+						           		 izz="1.0"/>
+			</inertial>			
+		</link>
+
+		<link name="${side}_hip">
+			<visual>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/${side}_leg_low.dae"/>
+				</geometry>					
+			</visual>
+			<inertial>
+				<mass value="5"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+							   iyy="1.0" iyz="0.0" 
+							       		 izz="1.0"/>
+			</inertial>			
+			<collision>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/phys_model/hip.stl"/>
+				</geometry>		
+			</collision>	
+		</link>
+
+		<link name="${side}_shin">
+			<visual>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/shin_low.dae"/>
+				</geometry>						
+			</visual>
+			<inertial>
+				<mass value="5"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					           iyy="1.0" iyz="0.0" 
+					                     izz="1.0"/>
+			</inertial>			
+			<collision>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/phys_model/phys_shin.stl"/>
+				</geometry>			
+			</collision>	
+		</link>
+
+		<link name="${side}_shin_foot_mount">
+			<inertial>
+				<mass value="1"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					 		   iyy="1.0" iyz="0.0" 
+					 		             izz="1.0"/>
+			</inertial>			
+		</link>
+	
+		<link name="${side}_foot">
+			<visual>
+				<geometry>				
+					<mesh filename="package://ar600_description/meshes/${side}_foot_low.dae"/>
+				</geometry>			
+			</visual>
+			<inertial>
+				<mass value="2"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					           iyy="1.0" iyz="0.0" 
+					                     izz="1.0"/>
+			</inertial>			
+			<collision>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/phys_model/foot.stl"/>
+				</geometry>
+			</collision>	
+		</link>
+
+		<joint name="base_${side}_leg_joint" type="revolute">
+			<parent link="${parent}_link"/>
+			<child link="base_${side}_hip"/>
+			<xacro:insert_block name="origin"/>
+			<axis xyz="0 0 ${reflect}"/>	
+			<limit effort="1000.0" lower="${-.5*reflect}" upper="${.5*reflect}" velocity="0.5"/>
+			<dynamics damping="0.7" />
+		</joint>
+
+		<joint name="${side}_base_mount" type="revolute">
+			<parent link="base_${side}_hip"/>
+			<child link="${side}_hip_mount"/>
+			<origin xyz="0.0267 0 -.154" rpy=" 0 0 0"/>
+			<limit effort="1000.0" lower="${-.5*reflect}" upper="${.5*reflect}" velocity="0.5"/>
+			<axis xyz="${reflect} 0 0"/>
+			<dynamics damping="0.7" />
+		</joint>
+	
+		<joint name="${side}_base_mount_hip" type="revolute">
+			<parent link="${side}_hip_mount"/>
+			<child link="${side}_hip"/>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<limit effort="1000.0" lower="-.5" upper=".5" velocity="0.5"/>
+			<axis xyz="0 -1 0"/>
+			<dynamics damping="0.7" />
+		</joint>	 
+
+		<joint name="${side}_hip_${side}_shin" type="revolute">
+			<parent link="${side}_hip"/>
+			<child link="${side}_shin"/>
+			<origin xyz="0 ${.01*reflect} -.335" rpy="0 0 0"/>
+			<limit effort="1000.0" lower="0" upper=".707" velocity="0.5"/>
+			<axis xyz="0 1 0"/>
+			<dynamics damping="0.7" />
+		</joint>
+
+		<joint name="${side}_shin_${side}_foot_mount" type="revolute">
+			<parent link="${side}_shin"/>
+			<child link="${side}_shin_foot_mount"/>
+			<origin xyz="0 0 -.26" rpy="0 0 0"/>
+			<limit effort="1000.0" lower="-.707" upper=".707" velocity="0.5"/>
+			<axis xyz="0 1 0"/>
+			<dynamics damping="0.7" />
+		</joint>
+
+		<joint name="${side}_shin_mount_${side}_foot" type="revolute">
+			<parent link="${side}_shin_foot_mount"/>
+			<child link="${side}_foot"/>
+			<limit effort="1000.0" lower="${-.707*reflect}" upper="${.707*reflect}" velocity="0.5"/>
+			<axis xyz="${reflect} 0 0"/>
+			<dynamics damping="0.7"/>
+		</joint>
+
+		<xacro:base_leg_joint_controller_macro side="${side}"/>
+		<xacro:base_mount_controller_macro side="${side}"/>
+		<xacro:base_mount_hip_controller_macro side="${side}"/>
+		<xacro:hip_shin_controller_macro side="${side}"/>
+		<xacro:shin_foot_mount_controller_macro side="${side}"/>
+		<xacro:shin_mount_foot_controller_macro side="${side}"/>
+
+	</xacro:macro>
+
+</robot>

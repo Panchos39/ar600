@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       name="ar600_torso" >
+
+       <xacro:include filename="$(find ar600_description)/gazebo/gazebo.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/base/base.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/head/head.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/leg/leg.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/hand/hand.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/palm/palm.urdf.xacro" />
+
+		<xacro:ar600_body_macro name="base"/>       
+	
+       <xacro:ar600_head_xacro name="head" parent="torso">
+			<origin xyz="-0.05 0 .37" rpy="0 0 0"/>
+       </xacro:ar600_head_xacro>
+		 
+
+</robot>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot name="ar600_hand" xmlns:xacro="http://www.ros.org/wiki/xacro">
+       <xacro:include filename="$(find ar600_description)/gazebo/gazebo.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/hand/hand.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/palm/palm.urdf.xacro" />
+
+	<link name="base_link">
+		<inertial>
+			<mass value="10"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>	
+	</link>
+
+	<xacro:ar600_hand_macro side="left" parent="base" reflect="1">
+		<origin xyz="0 0 0" rpy="0 0 1.57"/>
+	</xacro:ar600_hand_macro>
+
+	<xacro:ar600_palm_macro side="left" otherside="right" parent="left_hand_effector" reflect="1">
+		<origin xyz="0 0 0" rpy="0 0 -1.57"/>
+	</xacro:ar600_palm_macro>
+
+</robot>

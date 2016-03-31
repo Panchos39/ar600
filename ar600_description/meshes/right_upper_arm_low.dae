@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.68.0 r58537</authoring_tool>
+    </contributor>
+    <created>2014-01-26T01:23:25</created>
+    <modified>2014-01-26T01:23:25</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_effects/>
+  <library_geometries>
+    <geometry id="upperarm_low-mesh" name="upperarm_low">
+      <mesh>
+        <source id="upperarm_low-mesh-positions">
+          <float_array id="upperarm_low-mesh-positions-array" count="60">0 0.05000108 -0.08640575 -0.02938926 0.04045194 -0.08640587 -0.04755282 0.0154519 -0.08640617 -0.04755282 -0.01544976 -0.08640658 -0.0293892 -0.04044973 -0.08640688 0 -0.04999887 -0.08640706 0.02938926 -0.04044967 -0.08640694 0.04755282 -0.0154497 -0.08640664 0.04755276 0.01545196 -0.08640623 0.0293892 0.04045194 -0.08640593 0 0.04999995 0.003465771 -0.02938926 0.04045051 0.02309662 -0.04755282 0.01545035 0.03665667 -0.04755282 -0.01545131 0.03665632 -0.0293892 -0.04045116 0.0230956 0 -0.05000001 0.00346446 0.02938926 -0.04045087 0.003464579 0.04755282 -0.01545083 0.003464877 0.04755282 0.01545077 0.003465294 0.0293892 0.04045081 0.003465592</float_array>
+          <technique_common>
+            <accessor source="#upperarm_low-mesh-positions-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="upperarm_low-mesh-normals">
+          <float_array id="upperarm_low-mesh-normals-array" count="60">0.4497818 -0.6190985 -0.6436964 0.4497818 -0.6190985 0.6436964 0.1290627 -0.8258614 0.5488449 0 -0.7652516 -0.6436964 0.7278054 -0.2364574 -0.6436964 0.7278054 -0.2364574 0.6436964 -0.4497818 0.6190985 -0.6436964 -0.1504867 0.7000641 0.6980193 0.1290322 0.8258614 0.5488754 0 0.7652516 -0.6436964 0.7278054 0.2364879 -0.6436964 0.7278054 0.2364574 0.6436964 -0.7278054 0.2364574 -0.6436964 -0.4632099 0.2949309 0.8357189 0.4497818 0.6190985 -0.6436964 0.4497818 0.6190985 0.6436964 -0.7278054 -0.2364574 -0.6436964 -0.4632099 -0.2949614 0.8356884 -0.4497818 -0.6190985 -0.6436964 -0.1504867 -0.7000641 0.6979888</float_array>
+          <technique_common>
+            <accessor source="#upperarm_low-mesh-normals-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="upperarm_low-mesh-vertices">
+          <input semantic="POSITION" source="#upperarm_low-mesh-positions"/>
+        </vertices>
+        <polylist count="15">
+          <input semantic="VERTEX" source="#upperarm_low-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#upperarm_low-mesh-normals" offset="1"/>
+          <vcount>4 4 4 4 4 4 4 4 4 4 10 4 4 4 4 </vcount>
+          <p>6 0 16 1 15 2 5 3 7 4 17 5 16 1 6 0 1 6 11 7 10 8 0 9 8 10 18 11 17 5 7 4 2 12 12 13 11 7 1 6 9 14 19 15 18 11 8 10 3 16 13 17 12 13 2 12 0 9 10 8 19 15 9 14 4 18 14 19 13 17 3 16 5 3 15 2 14 19 4 18 1 6 0 9 9 14 8 10 7 4 6 0 5 3 4 18 3 16 2 12 13 17 14 19 11 7 12 13 14 19 15 2 10 8 11 7 19 15 10 8 15 2 16 1 18 11 19 15 16 1 17 5</p>
+        </polylist>
+      </mesh>
+      <extra><technique profile="MAYA"><double_sided>1</double_sided></technique></extra>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="upperarm_low" name="upperarm_low" type="NODE">
+        <matrix sid="transform">1 0 0 -7.45058e-9 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#upperarm_low-mesh"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

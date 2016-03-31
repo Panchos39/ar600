@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="ar600_base_torso_transmission">
+    <transmission name="torso_rotation_trans">
+      <!-- <actuator name="torso_rotation_motor" /> -->
+      <joint name="torso_rotation_joint" />
+      <type>
+      	transmission_interface/SimpleTransmission
+      </type>
+      <actuator name="torso_rotation_joint_actuator">
+        <mechanicalReduction>1</mechanicalReduction>
+        <motorTorqueConstant>10</motorTorqueConstant>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </actuator>
+      <!-- <mechanicalReduction>${-1 * 624/35 * 80/18}</mechanicalReduction> -->
+    </transmission>
+  </xacro:macro>
+</robot>

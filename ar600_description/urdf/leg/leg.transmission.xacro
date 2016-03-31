@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<xacro:macro name="base_leg_joint_controller_macro" params="side">   	
+	    <transmission name="base_${side}_leg_transmission">
+	    	<type>transmission_interface/SimpleTransmission</type> 
+			<joint name="base_${side}_leg_joint">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="torso_${side}_shoulder_actuator">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+				<motorTorqueConstant>10</motorTorqueConstant>
+			</actuator>
+		<!-- <mechanicalReduction>${-1 * 624/35 * 80/18}</mechanicalReduction> -->
+		</transmission>
+	</xacro:macro>
+
+	<xacro:macro name="base_mount_controller_macro" params="side">   	
+	    <transmission name="${side}_base_mount_transmission">
+	    	<type>transmission_interface/SimpleTransmission</type>	      
+			<joint name="${side}_base_mount">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="torso_${side}_shoulder_actuator">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+				<motorTorqueConstant>10</motorTorqueConstant>
+			</actuator>		
+		</transmission>
+	</xacro:macro>
+
+	<xacro:macro name="base_mount_hip_controller_macro" params="side">   	
+	    <transmission name="${side}_base_mount_hip_transmission">	
+	    	<type>transmission_interface/SimpleTransmission</type>      
+			<joint name="${side}_base_mount_hip">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="torso_${side}_shoulder_actuator">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+				<motorTorqueConstant>10</motorTorqueConstant>
+			</actuator>		
+		</transmission>
+	</xacro:macro>
+
+	<xacro:macro name="hip_shin_controller_macro" params="side">   	
+	    <transmission name="${side}_hip_${side}_shin_transmission">	      
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="${side}_hip_${side}_shin">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="torso_${side}_shoulder_actuator">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+				<motorTorqueConstant>10</motorTorqueConstant>
+			</actuator>		
+		</transmission>
+	</xacro:macro>
+
+	<xacro:macro name="shin_foot_mount_controller_macro" params="side">   	
+	    <transmission name="${side}_shin_${side}_foot_mount_transmission">	      
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="${side}_shin_${side}_foot_mount">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>	
+			</joint>
+			<actuator name="torso_${side}_shoulder_actuator">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+				<motorTorqueConstant>10</motorTorqueConstant>
+			</actuator>		
+		</transmission>
+	</xacro:macro>
+	
+
+	<xacro:macro name="shin_mount_foot_controller_macro" params="side">   	
+	    <transmission name="${side}_shin_mount_${side}_foot_transmission">	      
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="${side}_shin_mount_${side}_foot">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>	
+			</joint>
+			<actuator name="torso_${side}_shoulder_actuator">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+				<motorTorqueConstant>10</motorTorqueConstant>
+			</actuator>		
+		</transmission>
+	</xacro:macro>
+	
+</robot>

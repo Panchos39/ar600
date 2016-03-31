@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<robot name="rrbot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+       <xacro:include filename="$(find ar600_description)/gazebo/gazebo.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/base/base.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/head/head.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/leg/leg.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/hand/hand.urdf.xacro" />
+       <xacro:include filename="$(find ar600_description)/urdf/palm/palm.urdf.xacro" />
+
+       <link name="world"/>
+
+       <xacro:ar600_body_macro name="base"/>       
+       
+       <joint name="fixed" type="fixed">
+			<parent link="world"/>
+			<child link="base_link"/>
+		</joint>
+       
+       <xacro:ar600_head_xacro name="head" parent="torso">
+			<origin xyz="-0.05 0 .37" rpy="0 0 0"/>
+       </xacro:ar600_head_xacro>
+
+		<xacro:ar600_leg_macro side="right" reflect="-1" parent="base">
+			<origin xyz="0.025 -.1 -0.085" rpy=" 0 0 0"/>
+		</xacro:ar600_leg_macro>
+
+		<xacro:ar600_leg_macro side="left" reflect="1" parent="base">
+			<origin xyz="0.025 .1 -0.085" rpy=" 0 0 0"/>
+		</xacro:ar600_leg_macro>
+		
+		<xacro:ar600_hand_macro side="left" parent="torso" reflect="1">
+			<origin xyz="-0.01 0.12 .25" rpy="1.57 1.2 1.57"/>
+		</xacro:ar600_hand_macro>
+
+		<xacro:ar600_hand_macro side="right" parent="torso" reflect="-1">
+			<origin xyz="-0.01 -0.12 .25" rpy="-1.57 1.2 -1.57"/>
+		</xacro:ar600_hand_macro>
+
+		
+		<xacro:ar600_palm_macro side="right" otherside="left" parent="right_hand_effector" reflect="-1">
+			<origin xyz="0 0 0" rpy="0 0 1.57"/>
+		</xacro:ar600_palm_macro>
+
+
+		<xacro:ar600_palm_macro side="left" otherside="right" parent="left_hand_effector" reflect="1">
+			<origin xyz="0 0 0" rpy="0 0 -1.57"/>
+		</xacro:ar600_palm_macro>
+</robot>

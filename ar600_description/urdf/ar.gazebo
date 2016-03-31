@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot>
+
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNamespace>/ar600</robotNamespace>
+		</plugin>
+	</gazebo>
+
+	<gazebo reference="base_link">
+   		<mu1>0.2</mu1>
+   		<mu2>0.2</mu2>   		
+	</gazebo>	
+
+	<gazebo reference="torso">
+   		<mu1>0.2</mu1>
+   		<mu2>0.2</mu2>   	
+	</gazebo>
+
+	<gazebo reference="head_mount">
+   		<mu1>0.2</mu1>
+   		<mu2>0.2</mu2>   	
+	</gazebo>
+
+	<gazebo reference="head">
+   		<mu1>0.2</mu1>
+   		<mu2>0.2</mu2>   	
+	</gazebo>
+
+
+</robot>

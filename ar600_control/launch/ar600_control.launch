@@ -1,0 +1,31 @@
+<launch>
+
+	<!-- Load joint controller configurations from YAML file to parameter server -->
+	<rosparam file="$(find ar600_control)/config/ar600_control.yaml" command="load"/>
+
+	<!-- load the controllers -->
+
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/ar600" args="
+		torso_left_shoulder_position_controller 
+		torso_right_shoulder_position_controller 
+		left_upper_forearm_shoulder_position_controller right_upper_forearm_shoulder_position_controller left_upper_forearm_left_lower_forearm_position_controller right_upper_forearm_right_lower_forearm_position_controller left_lower_forearm_arm_position_controller 
+		right_lower_forearm_arm_position_controller 
+		left_lower_arm_effector_position_controller 
+		right_lower_arm_effector_position_controller
+
+		base_left_leg_joint_position_controller
+		left_base_mount_position_controller
+		left_base_mount_hip_position_controller
+		left_hip_left_shin_position_controller
+		left_shin_left_foot_mount_position_controller
+		left_shin_mount_left_foot_position_controller
+		
+		joint_state_controller"/>
+
+    <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+    <remap from="/joint_states" to="/ar600/joint_states" />
+  </node>
+
+</launch>

@@ -1,0 +1,274 @@
+# joint_limits.yaml allows the dynamics properties specified in the URDF to be overwritten or augmented as needed
+# Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration]
+# Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
+joint_limits:
+  arm_left_palm:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  arm_right_palm:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  base_left_leg_joint:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  base_right_leg_joint:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  head_mount_head:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_base_mount:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_base_mount_hip:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_f11_f12:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_f12_f13:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_f13_f14:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_f21_f22:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_f22_f23:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_f23_f24:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_f31_f32:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_f32_f33:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_f33_f34:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_f41_f42:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_f42_f43:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hip_left_shin:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_lower_arm_effector:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_lower_forearm_arm:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_shin_left_foot_mount:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_shin_mount_left_foot:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_thumb1_thumb2:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_thumb2_thumb3:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_upper_forearm_left_lower_forearm:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_upper_forearm_shoulder:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  mount_head_tilt_mount:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_base_mount:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_base_mount_hip:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_f11_f12:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_f12_f13:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_f13_f14:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_f21_f22:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_f22_f23:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_f23_f24:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_f31_f32:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_f32_f33:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_f33_f34:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_f41_f42:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_f42_f43:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_hip_right_shin:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_lower_arm_effector:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_lower_forearm_arm:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_shin_mount_right_foot:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_shin_right_foot_mount:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_thumb1_thumb2:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_thumb2_thumb3:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_upper_forearm_right_lower_forearm:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_upper_forearm_shoulder:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  torso_head_mount:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  torso_left_shoulder:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  torso_right_shoulder:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0
+  torso_rotation_joint:
+    has_velocity_limits: true
+    max_velocity: 0.5
+    has_acceleration_limits: false
+    max_acceleration: 0

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+   <xacro:macro name="shoulder_transmission_macro" params="side">   	
+	    <transmission name="torso_${side}_shoulder_transmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="torso_${side}_shoulder">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="torso_${side}_shoulder_actuator">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+				<motorTorqueConstant>10</motorTorqueConstant>
+			</actuator>
+		<!-- <mechanicalReduction>${-1 * 624/35 * 80/18}</mechanicalReduction> -->
+		</transmission>
+	</xacro:macro>
+
+   <xacro:macro name="upper_forearm_shoulder_transmission_macro" params="side">   	
+	    <transmission name="${side}_upper_forearm_shoulder_transmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="${side}_upper_forearm_shoulder">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="${side}_upper_forearm_actuator">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+				<motorTorqueConstant>10</motorTorqueConstant>
+			</actuator>
+		<!-- <mechanicalReduction>${-1 * 624/35 * 80/18}</mechanicalReduction> -->
+		</transmission>
+	</xacro:macro>
+
+
+   <xacro:macro name="upper_forearm_lower_forearm_transmission_macro" params="side">   	
+	    <transmission name="${side}_upper_forearm_${side}_lower_forearm_transmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="${side}_upper_forearm_${side}_lower_forearm">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="${side}_upper_forearm_${side}_lower_forearm_actuator">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+				<motorTorqueConstant>10</motorTorqueConstant>
+			</actuator>
+		<!-- <mechanicalReduction>${-1 * 624/35 * 80/18}</mechanicalReduction> -->
+		</transmission>
+	</xacro:macro>
+
+   <xacro:macro name="elbow_transmission_macro" params="side">   	
+	    <transmission name="${side}_elbow_transmission">
+	      	<type>transmission_interface/SimpleTransmission</type>
+			<joint name="${side}_lower_forearm_arm">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="${side}_lower_forearm_arm_actuator">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+				<motorTorqueConstant>10</motorTorqueConstant>
+			</actuator>
+		<!-- <mechanicalReduction>${-1 * 624/35 * 80/18}</mechanicalReduction> -->
+		</transmission>
+	</xacro:macro>
+
+   <xacro:macro name="arm_transmission_macro" params="side">   	
+	    <transmission name="${side}_arm_transmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="${side}_lower_arm_effector">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>	
+			</joint>
+			<actuator name="${side}_lower_arm_effector_actuator">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+				<motorTorqueConstant>10</motorTorqueConstant>
+			</actuator>
+		<!-- <mechanicalReduction>${-1 * 624/35 * 80/18}</mechanicalReduction> -->
+		</transmission>
+	</xacro:macro>
+
+</robot>

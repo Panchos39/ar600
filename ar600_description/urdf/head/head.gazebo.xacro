@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:macro name="ar600_head_gazebo" params="name">
+		<gazebo reference="${name}_link">
+			<kp value="1000000.0" />
+			<kd value="1.0" />
+		</gazebo>
+	</xacro:macro>
+</robot>

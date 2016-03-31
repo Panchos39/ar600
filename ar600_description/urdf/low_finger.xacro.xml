@@ -1,0 +1,107 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ar">
+
+	<xacro:macro name="box_shape" params="size">
+		<geometry>
+			<box size="${size}"/>	
+		</geometry>		
+	</xacro:macro>
+
+		<xacro:macro name="white_material">
+				<material name="white">
+					<color rgba="1 1 1 1"/>
+				</material>
+	</xacro:macro>
+
+	<xacro:macro name="finger" params="prefix reflect offset index">
+		
+		<link name="${prefix}${index}1">
+		<visual>
+			<xacro:box_shape size=".01 .01 .03"/>
+			<origin xyz="0 0 -0.015" rpy="0 0 0"/>
+			<xacro:white_material/>
+		</visual>
+		<inertial>
+			<mass value="0.05"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+		<collision>
+			<xacro:box_shape size=".01 .01 .03"/>
+			<origin xyz="0 0 -0.015" rpy="0 0 0"/>
+		</collision>
+	</link>
+
+	<link name="${prefix}${index}2">
+		<visual>
+			<xacro:box_shape size=".01 .01 .03"/>
+			<origin xyz="0 0 -0.015" rpy="0 0 0"/>
+			<xacro:white_material/>
+		</visual>
+		<inertial>
+			<mass value="0.05"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+		<collision>
+			<xacro:box_shape size=".01 .01 .03"/>
+			<origin xyz="0 0 -0.015" rpy="0 0 0"/>
+		</collision>
+	</link>
+
+	<link name="${prefix}${index}3">
+		<visual>
+			<xacro:box_shape size=".01 .01 .01"/>
+			<origin xyz="0 0 -0.005" rpy="0 0 0"/>
+			<xacro:white_material/>
+		</visual>
+		<inertial>
+			<mass value="0.05"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+		<collision>
+			<xacro:box_shape size=".01 .01 .01"/>
+			<origin xyz="0 0 -0.005" rpy="0 0 0"/>	
+				</collision>
+	</link>
+
+
+
+
+	<joint name="${prefix}_palm_ll${index}" type="revolute">
+		<parent link="${prefix}_palm"/>
+		<child link="${prefix}${index}1"/>	
+		<origin xyz="${0.02*reflect} ${reflect*offset-reflect*0.03} -0.07" rpy="0 0 0"/>
+		<limit effort="1000.0" lower="0" upper="0.707" velocity="0.5"/>
+		<axis xyz="0 ${reflect} 0"/>
+	</joint>
+
+
+	<joint name="${prefix}_l${index}1_${index}2" type="revolute">
+		<parent link="${prefix}${index}1"/>
+		<child link="${prefix}${index}2"/>	
+		<origin xyz="0 0 -0.03" rpy="0 0 0"/>
+		<limit effort="1000.0" lower="0" upper="0.707" velocity="0.5"/>
+		<axis xyz="0 ${reflect} 0"/>	
+	</joint>
+
+
+	<joint name="${prefix}eft_l${index}2_l${index}3" type="revolute">
+		<parent link="${prefix}${index}2"/>
+		<child link="${prefix}${index}3"/>	
+		<origin xyz="0 0 -0.03" rpy="0 0 0"/>	
+		<limit effort="1000.0" lower="0" upper="0.707" velocity="0.5"/>
+		<axis xyz="0 ${reflect} 0"/>
+	</joint>
+
+	</xacro:macro>
+
+	<xacro:finger prefix='left' reflect='1' offset='0' index="1"/>
+	<xacro:finger prefix='left' reflect='1' offset='0.02' index="2"/>
+	<xacro:finger prefix='left' reflect='1' offset='0.04' index="3"/>
+	<xacro:finger prefix='left' reflect='1' offset='0.06' index="4"/>
+
+	<xacro:finger prefix='right' reflect='-1' offset='0' index="4"/>
+	<xacro:finger prefix='right' reflect='-1' offset='0.02' index="3"/>
+	<xacro:finger prefix='right' reflect='-1' offset='0.04' index="2"/>
+	<xacro:finger prefix='right' reflect='-1' offset='0.06' index="1"/>
+
+
+</robot>

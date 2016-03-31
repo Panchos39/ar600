@@ -1,0 +1,69 @@
+controller_list:
+  - name: fake_ar600_right_hand_controller
+    joints:
+      - torso_right_shoulder
+      - right_upper_forearm_shoulder
+      - right_upper_forearm_right_lower_forearm
+      - right_lower_forearm_arm
+      - right_lower_arm_effector
+  - name: fake_ar600_left_hand_controller
+    joints:
+      - torso_left_shoulder
+      - left_upper_forearm_shoulder
+      - left_upper_forearm_left_lower_forearm
+      - left_lower_forearm_arm
+      - left_lower_arm_effector
+  - name: fake_ar600_head_controller
+    joints:
+      - torso_head_mount
+      - mount_head_tilt_mount
+      - head_mount_head
+  - name: fake_ar600_legs_controller
+    joints:
+      - base_left_leg_joint
+      - left_base_mount
+      - left_base_mount_hip
+      - left_hip_left_shin
+      - left_shin_left_foot_mount
+      - left_shin_mount_left_foot
+      - base_right_leg_joint
+      - right_base_mount
+      - right_base_mount_hip
+      - right_hip_right_shin
+      - right_shin_right_foot_mount
+      - right_shin_mount_right_foot
+  - name: fake_ar600_torso_controller
+    joints:
+      - torso_rotation_joint
+  - name: fake_ar600_left_arm_controller
+    joints:
+      - arm_left_palm
+      - left_f11_f12
+      - left_f12_f13
+      - left_f13_f14
+      - left_f21_f22
+      - left_f22_f23
+      - left_f23_f24
+      - left_f31_f32
+      - left_f32_f33
+      - left_f33_f34
+      - left_f41_f42
+      - left_f42_f43
+      - left_thumb1_thumb2
+      - left_thumb2_thumb3
+  - name: fake_ar600_right_arm_controller
+    joints:
+      - arm_right_palm
+      - right_f11_f12
+      - right_f12_f13
+      - right_f13_f14
+      - right_f21_f22
+      - right_f22_f23
+      - right_f23_f24
+      - right_f31_f32
+      - right_f32_f33
+      - right_f33_f34
+      - right_f41_f42
+      - right_f42_f43
+      - right_thumb1_thumb2
+      - right_thumb2_thumb3

@@ -1,0 +1,1587 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="ar600">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="ar600_right_hand">
+        <link name="right_shoulder" />
+        <link name="right_upper_forearm" />
+        <link name="right_elbow" />
+        <link name="right_arm_link" />
+        <link name="right_hand_effector_link" />
+        <joint name="torso_right_shoulder" />
+        <joint name="right_upper_forearm_shoulder" />
+        <joint name="right_upper_forearm_right_lower_forearm" />
+        <joint name="right_lower_forearm_arm" />
+        <joint name="right_lower_arm_effector" />
+    </group>
+    <group name="ar600_left_hand">
+        <link name="left_shoulder" />
+        <link name="left_upper_forearm" />
+        <link name="left_elbow" />
+        <link name="left_arm_link" />
+        <link name="left_hand_effector_link" />
+        <joint name="torso_left_shoulder" />
+        <joint name="left_upper_forearm_shoulder" />
+        <joint name="left_upper_forearm_left_lower_forearm" />
+        <joint name="left_lower_forearm_arm" />
+        <joint name="left_lower_arm_effector" />
+    </group>
+    <group name="ar600_head">
+        <link name="head_mount" />
+        <link name="head_tilt_mount" />
+        <link name="head_link" />
+        <joint name="torso_head_mount" />
+        <joint name="mount_head_tilt_mount" />
+        <joint name="head_mount_head" />
+    </group>
+    <group name="ar600_legs">
+        <link name="base_link" />
+        <link name="base_left_hip" />
+        <link name="left_hip_mount" />
+        <link name="left_hip" />
+        <link name="left_shin" />
+        <link name="left_shin_foot_mount" />
+        <link name="left_foot" />
+        <link name="base_right_hip" />
+        <link name="right_hip_mount" />
+        <link name="right_hip" />
+        <link name="right_shin" />
+        <link name="right_shin_foot_mount" />
+        <link name="right_foot" />
+        <joint name="base_left_leg_joint" />
+        <joint name="left_base_mount" />
+        <joint name="left_base_mount_hip" />
+        <joint name="left_hip_left_shin" />
+        <joint name="left_shin_left_foot_mount" />
+        <joint name="left_shin_mount_left_foot" />
+        <joint name="base_right_leg_joint" />
+        <joint name="right_base_mount" />
+        <joint name="right_base_mount_hip" />
+        <joint name="right_hip_right_shin" />
+        <joint name="right_shin_right_foot_mount" />
+        <joint name="right_shin_mount_right_foot" />
+    </group>
+    <group name="ar600_torso">
+        <link name="base_link" />
+        <link name="torso_link" />
+        <joint name="torso_rotation_joint" />
+    </group>
+    <group name="ar600_left_arm">
+        <link name="left_palm" />
+        <link name="leftf11" />
+        <link name="leftf12" />
+        <link name="leftf13" />
+        <link name="leftf14" />
+        <link name="leftf21" />
+        <link name="leftf22" />
+        <link name="leftf23" />
+        <link name="leftf24" />
+        <link name="leftf31" />
+        <link name="leftf32" />
+        <link name="leftf33" />
+        <link name="leftf34" />
+        <link name="leftf41" />
+        <link name="leftf42" />
+        <link name="leftf43" />
+        <link name="leftbigfingerseg1" />
+        <link name="leftbigfingerseg2" />
+        <link name="leftbigfingerseg3" />
+        <joint name="arm_left_palm" />
+        <joint name="left_palm_f1" />
+        <joint name="left_f11_f12" />
+        <joint name="left_f12_f13" />
+        <joint name="left_f13_f14" />
+        <joint name="left_palm_f2" />
+        <joint name="left_f21_f22" />
+        <joint name="left_f22_f23" />
+        <joint name="left_f23_f24" />
+        <joint name="left_palm_f3" />
+        <joint name="left_f31_f32" />
+        <joint name="left_f32_f33" />
+        <joint name="left_f33_f34" />
+        <joint name="left_palm_f4" />
+        <joint name="left_f41_f42" />
+        <joint name="left_f42_f43" />
+        <joint name="left_palm_thumb1" />
+        <joint name="left_thumb1_thumb2" />
+        <joint name="left_thumb2_thumb3" />
+    </group>
+    <group name="ar600_right_arm">
+        <link name="right_palm" />
+        <link name="rightf11" />
+        <link name="rightf12" />
+        <link name="rightf13" />
+        <link name="rightf14" />
+        <link name="rightf21" />
+        <link name="rightf22" />
+        <link name="rightf23" />
+        <link name="rightf24" />
+        <link name="rightf31" />
+        <link name="rightf32" />
+        <link name="rightf33" />
+        <link name="rightf34" />
+        <link name="rightf41" />
+        <link name="rightf42" />
+        <link name="rightf43" />
+        <link name="rightbigfingerseg1" />
+        <link name="rightbigfingerseg2" />
+        <link name="rightbigfingerseg3" />
+        <joint name="arm_right_palm" />
+        <joint name="right_palm_f1" />
+        <joint name="right_f11_f12" />
+        <joint name="right_f12_f13" />
+        <joint name="right_f13_f14" />
+        <joint name="right_palm_f2" />
+        <joint name="right_f21_f22" />
+        <joint name="right_f22_f23" />
+        <joint name="right_f23_f24" />
+        <joint name="right_palm_f3" />
+        <joint name="right_f31_f32" />
+        <joint name="right_f32_f33" />
+        <joint name="right_f33_f34" />
+        <joint name="right_palm_f4" />
+        <joint name="right_f41_f42" />
+        <joint name="right_f42_f43" />
+        <joint name="right_palm_thumb1" />
+        <joint name="right_thumb1_thumb2" />
+        <joint name="right_thumb2_thumb3" />
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="ar600_torso_default_pose" group="ar600_torso">
+        <joint name="torso_rotation_joint" value="0" />
+    </group_state>
+    <group_state name="ar600_legs_default_pose" group="ar600_legs">
+        <joint name="base_left_leg_joint" value="0" />
+        <joint name="base_right_leg_joint" value="0" />
+        <joint name="left_base_mount" value="0" />
+        <joint name="left_base_mount_hip" value="0" />
+        <joint name="left_hip_left_shin" value="0" />
+        <joint name="left_shin_left_foot_mount" value="0" />
+        <joint name="left_shin_mount_left_foot" value="0" />
+        <joint name="right_base_mount" value="0" />
+        <joint name="right_base_mount_hip" value="0" />
+        <joint name="right_hip_right_shin" value="0" />
+        <joint name="right_shin_mount_right_foot" value="0" />
+        <joint name="right_shin_right_foot_mount" value="0" />
+    </group_state>
+    <group_state name="ar600_head_default_pose" group="ar600_head">
+        <joint name="head_mount_head" value="0" />
+        <joint name="mount_head_tilt_mount" value="0" />
+        <joint name="torso_head_mount" value="0" />
+    </group_state>
+    <group_state name="ar600_right_hand_default_pose" group="ar600_right_hand">
+        <joint name="right_lower_arm_effector" value="0" />
+        <joint name="right_lower_forearm_arm" value="0" />
+        <joint name="right_upper_forearm_right_lower_forearm" value="0" />
+        <joint name="right_upper_forearm_shoulder" value="0" />
+        <joint name="torso_right_shoulder" value="0" />
+    </group_state>
+    <group_state name="ar600_left_hand_default_pose" group="ar600_left_hand">
+        <joint name="left_lower_arm_effector" value="0" />
+        <joint name="left_lower_forearm_arm" value="0" />
+        <joint name="left_upper_forearm_left_lower_forearm" value="0" />
+        <joint name="left_upper_forearm_shoulder" value="0" />
+        <joint name="torso_left_shoulder" value="0" />
+    </group_state>
+    <group_state name="ar600_left_arm_default_pose" group="ar600_left_arm">
+        <joint name="arm_left_palm" value="0" />
+        <joint name="left_f11_f12" value="0" />
+        <joint name="left_f12_f13" value="0" />
+        <joint name="left_f13_f14" value="0" />
+        <joint name="left_f21_f22" value="0" />
+        <joint name="left_f22_f23" value="0" />
+        <joint name="left_f23_f24" value="0" />
+        <joint name="left_f31_f32" value="0" />
+        <joint name="left_f32_f33" value="0" />
+        <joint name="left_f33_f34" value="0" />
+        <joint name="left_f41_f42" value="0" />
+        <joint name="left_f42_f43" value="0" />
+        <joint name="left_thumb1_thumb2" value="0" />
+        <joint name="left_thumb2_thumb3" value="0" />
+    </group_state>
+    <group_state name="ar600_right_arm_default_pose" group="ar600_right_arm">
+        <joint name="arm_right_palm" value="0" />
+        <joint name="right_f11_f12" value="0.012" />
+        <joint name="right_f12_f13" value="0" />
+        <joint name="right_f13_f14" value="0" />
+        <joint name="right_f21_f22" value="0" />
+        <joint name="right_f22_f23" value="0" />
+        <joint name="right_f23_f24" value="0" />
+        <joint name="right_f31_f32" value="0" />
+        <joint name="right_f32_f33" value="0" />
+        <joint name="right_f33_f34" value="0" />
+        <joint name="right_f41_f42" value="0" />
+        <joint name="right_f42_f43" value="0" />
+        <joint name="right_thumb1_thumb2" value="0" />
+        <joint name="right_thumb2_thumb3" value="0" />
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="ar600_left_hand_effector" parent_link="left_hand_effector_link" group="ar600_left_arm" parent_group="ar600_left_hand" />
+    <end_effector name="ar600_right_hand_effector" parent_link="right_hand_effector_link" group="ar600_right_arm" parent_group="ar600_right_hand" />
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="base_left_hip" link2="base_link" reason="Adjacent" />
+    <disable_collisions link1="base_left_hip" link2="head_link" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="left_elbow" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="left_foot" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="left_hip" reason="Adjacent" />
+    <disable_collisions link1="base_left_hip" link2="left_shin" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="left_shoulder" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="left_upper_forearm" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="right_foot" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="right_hip" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="right_shin" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="rightf34" reason="Never" />
+    <disable_collisions link1="base_left_hip" link2="torso_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="base_right_hip" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="head_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="left_elbow" reason="Never" />
+    <disable_collisions link1="base_link" link2="left_foot" reason="Never" />
+    <disable_collisions link1="base_link" link2="left_hip" reason="Never" />
+    <disable_collisions link1="base_link" link2="left_shin" reason="Never" />
+    <disable_collisions link1="base_link" link2="left_shoulder" reason="Never" />
+    <disable_collisions link1="base_link" link2="left_upper_forearm" reason="Never" />
+    <disable_collisions link1="base_link" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="base_link" link2="right_foot" reason="Never" />
+    <disable_collisions link1="base_link" link2="right_hip" reason="Never" />
+    <disable_collisions link1="base_link" link2="right_shin" reason="Never" />
+    <disable_collisions link1="base_link" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="base_link" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="base_link" link2="rightf14" reason="Never" />
+    <disable_collisions link1="base_link" link2="torso_link" reason="Adjacent" />
+    <disable_collisions link1="base_right_hip" link2="head_link" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="left_arm_link" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="left_elbow" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="left_foot" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="left_hip" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="left_palm" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="left_shin" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="left_shoulder" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="left_upper_forearm" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftbigfingerseg1" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftbigfingerseg2" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftbigfingerseg3" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf11" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf12" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf13" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf14" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf21" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf22" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf23" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf24" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf31" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf32" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf33" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf41" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf42" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="leftf43" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="right_arm_link" reason="Default" />
+    <disable_collisions link1="base_right_hip" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="right_foot" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="right_hip" reason="Adjacent" />
+    <disable_collisions link1="base_right_hip" link2="right_shin" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="base_right_hip" link2="torso_link" reason="Default" />
+    <disable_collisions link1="head_link" link2="left_foot" reason="Never" />
+    <disable_collisions link1="head_link" link2="left_hip" reason="Never" />
+    <disable_collisions link1="head_link" link2="left_shin" reason="Never" />
+    <disable_collisions link1="head_link" link2="left_shoulder" reason="Never" />
+    <disable_collisions link1="head_link" link2="leftf13" reason="Never" />
+    <disable_collisions link1="head_link" link2="leftf14" reason="Never" />
+    <disable_collisions link1="head_link" link2="leftf22" reason="Never" />
+    <disable_collisions link1="head_link" link2="leftf23" reason="Never" />
+    <disable_collisions link1="head_link" link2="leftf24" reason="Never" />
+    <disable_collisions link1="head_link" link2="leftf33" reason="Never" />
+    <disable_collisions link1="head_link" link2="leftf34" reason="Never" />
+    <disable_collisions link1="head_link" link2="leftf42" reason="Never" />
+    <disable_collisions link1="head_link" link2="leftf43" reason="Never" />
+    <disable_collisions link1="head_link" link2="right_foot" reason="Never" />
+    <disable_collisions link1="head_link" link2="right_hip" reason="Never" />
+    <disable_collisions link1="head_link" link2="right_shin" reason="Never" />
+    <disable_collisions link1="head_link" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="head_link" link2="rightf22" reason="Never" />
+    <disable_collisions link1="head_link" link2="rightf23" reason="Never" />
+    <disable_collisions link1="head_link" link2="rightf24" reason="Never" />
+    <disable_collisions link1="head_link" link2="rightf33" reason="Never" />
+    <disable_collisions link1="head_link" link2="rightf34" reason="Never" />
+    <disable_collisions link1="head_link" link2="rightf41" reason="Never" />
+    <disable_collisions link1="head_link" link2="torso_link" reason="Adjacent" />
+    <disable_collisions link1="left_arm_link" link2="left_elbow" reason="Adjacent" />
+    <disable_collisions link1="left_arm_link" link2="left_foot" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="left_hip" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="left_palm" reason="Adjacent" />
+    <disable_collisions link1="left_arm_link" link2="left_shin" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="left_shoulder" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="left_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf11" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf12" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf13" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf14" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf21" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf22" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf23" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf24" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf31" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf32" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf33" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf34" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf41" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf42" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="leftf43" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="right_foot" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="right_hip" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="right_shin" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="rightf22" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="rightf24" reason="Never" />
+    <disable_collisions link1="left_arm_link" link2="rightf34" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="left_foot" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="left_hip" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="left_palm" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="left_shin" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="left_shoulder" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="left_upper_forearm" reason="Adjacent" />
+    <disable_collisions link1="left_elbow" link2="leftbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf11" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf12" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf13" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf14" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf21" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf22" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf23" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf24" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf31" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf32" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf33" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf34" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf41" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf42" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="leftf43" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="right_foot" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="right_hip" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="right_palm" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="right_shin" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf11" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf12" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf13" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf14" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf21" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf22" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf23" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf24" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf31" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf32" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf33" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf34" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf41" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf42" reason="Never" />
+    <disable_collisions link1="left_elbow" link2="rightf43" reason="Never" />
+    <disable_collisions link1="left_foot" link2="left_hip" reason="Never" />
+    <disable_collisions link1="left_foot" link2="left_palm" reason="Never" />
+    <disable_collisions link1="left_foot" link2="left_shin" reason="Adjacent" />
+    <disable_collisions link1="left_foot" link2="left_shoulder" reason="Never" />
+    <disable_collisions link1="left_foot" link2="left_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf11" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf12" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf13" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf14" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf21" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf22" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf23" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf24" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf31" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf32" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf33" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf34" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf41" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf42" reason="Never" />
+    <disable_collisions link1="left_foot" link2="leftf43" reason="Never" />
+    <disable_collisions link1="left_foot" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="left_foot" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="left_foot" link2="right_hip" reason="Never" />
+    <disable_collisions link1="left_foot" link2="right_palm" reason="Never" />
+    <disable_collisions link1="left_foot" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="left_foot" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf11" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf12" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf13" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf14" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf21" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf22" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf23" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf24" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf31" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf32" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf33" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf34" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf41" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf42" reason="Never" />
+    <disable_collisions link1="left_foot" link2="rightf43" reason="Never" />
+    <disable_collisions link1="left_foot" link2="torso_link" reason="Never" />
+    <disable_collisions link1="left_hip" link2="left_palm" reason="Never" />
+    <disable_collisions link1="left_hip" link2="left_shin" reason="Adjacent" />
+    <disable_collisions link1="left_hip" link2="left_shoulder" reason="Never" />
+    <disable_collisions link1="left_hip" link2="left_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf11" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf12" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf13" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf14" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf21" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf22" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf23" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf24" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf31" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf32" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf33" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf34" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf41" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf42" reason="Never" />
+    <disable_collisions link1="left_hip" link2="leftf43" reason="Never" />
+    <disable_collisions link1="left_hip" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="left_hip" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="left_hip" link2="right_foot" reason="Never" />
+    <disable_collisions link1="left_hip" link2="right_palm" reason="Never" />
+    <disable_collisions link1="left_hip" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="left_hip" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf11" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf12" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf13" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf14" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf21" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf22" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf23" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf24" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf31" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf32" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf33" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf34" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf41" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf42" reason="Never" />
+    <disable_collisions link1="left_hip" link2="rightf43" reason="Never" />
+    <disable_collisions link1="left_hip" link2="torso_link" reason="Never" />
+    <disable_collisions link1="left_palm" link2="left_shin" reason="Never" />
+    <disable_collisions link1="left_palm" link2="left_shoulder" reason="Never" />
+    <disable_collisions link1="left_palm" link2="left_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_palm" link2="leftbigfingerseg1" reason="Adjacent" />
+    <disable_collisions link1="left_palm" link2="leftbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_palm" link2="leftf11" reason="Adjacent" />
+    <disable_collisions link1="left_palm" link2="leftf12" reason="Never" />
+    <disable_collisions link1="left_palm" link2="leftf13" reason="Never" />
+    <disable_collisions link1="left_palm" link2="leftf14" reason="Never" />
+    <disable_collisions link1="left_palm" link2="leftf21" reason="Adjacent" />
+    <disable_collisions link1="left_palm" link2="leftf22" reason="Never" />
+    <disable_collisions link1="left_palm" link2="leftf23" reason="Never" />
+    <disable_collisions link1="left_palm" link2="leftf24" reason="Never" />
+    <disable_collisions link1="left_palm" link2="leftf31" reason="Adjacent" />
+    <disable_collisions link1="left_palm" link2="leftf32" reason="Never" />
+    <disable_collisions link1="left_palm" link2="leftf33" reason="Never" />
+    <disable_collisions link1="left_palm" link2="leftf34" reason="Never" />
+    <disable_collisions link1="left_palm" link2="leftf41" reason="Adjacent" />
+    <disable_collisions link1="left_palm" link2="leftf43" reason="Never" />
+    <disable_collisions link1="left_palm" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="left_palm" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="left_palm" link2="right_foot" reason="Never" />
+    <disable_collisions link1="left_palm" link2="right_hip" reason="Never" />
+    <disable_collisions link1="left_palm" link2="right_shin" reason="Never" />
+    <disable_collisions link1="left_palm" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="left_palm" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_palm" link2="rightf11" reason="Never" />
+    <disable_collisions link1="left_palm" link2="rightf21" reason="Never" />
+    <disable_collisions link1="left_palm" link2="rightf34" reason="Never" />
+    <disable_collisions link1="left_palm" link2="rightf43" reason="Never" />
+    <disable_collisions link1="left_shin" link2="left_shoulder" reason="Never" />
+    <disable_collisions link1="left_shin" link2="left_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf11" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf12" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf13" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf14" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf21" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf22" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf23" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf24" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf31" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf32" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf33" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf34" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf41" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf42" reason="Never" />
+    <disable_collisions link1="left_shin" link2="leftf43" reason="Never" />
+    <disable_collisions link1="left_shin" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="left_shin" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="left_shin" link2="right_palm" reason="Never" />
+    <disable_collisions link1="left_shin" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="left_shin" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf11" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf12" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf13" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf14" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf21" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf22" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf23" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf24" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf31" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf32" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf33" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf34" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf41" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf42" reason="Never" />
+    <disable_collisions link1="left_shin" link2="rightf43" reason="Never" />
+    <disable_collisions link1="left_shin" link2="torso_link" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="left_upper_forearm" reason="Adjacent" />
+    <disable_collisions link1="left_shoulder" link2="leftbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf11" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf12" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf13" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf14" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf21" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf22" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf23" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf24" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf31" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf32" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf33" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf34" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf41" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf42" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="leftf43" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="right_foot" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="right_hip" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="right_palm" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="right_shin" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf11" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf12" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf13" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf14" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf21" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf22" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf23" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf24" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf31" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf32" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf33" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf34" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf41" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf42" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="rightf43" reason="Never" />
+    <disable_collisions link1="left_shoulder" link2="torso_link" reason="Adjacent" />
+    <disable_collisions link1="left_upper_forearm" link2="leftbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf11" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf12" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf13" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf14" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf21" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf22" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf23" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf24" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf31" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf32" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf33" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf34" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf41" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf42" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="leftf43" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="right_foot" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="right_hip" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="right_palm" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="right_shin" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf11" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf12" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf13" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf14" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf21" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf22" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf23" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf24" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf31" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf32" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf33" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf34" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf41" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf42" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="rightf43" reason="Never" />
+    <disable_collisions link1="left_upper_forearm" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftbigfingerseg2" reason="Adjacent" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf11" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf12" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf13" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf14" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf21" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf22" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf23" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf24" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf31" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf32" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg1" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftbigfingerseg3" reason="Adjacent" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf11" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf12" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf13" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf21" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf22" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf23" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf24" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf31" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf32" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg2" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="leftf21" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="leftf22" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="leftf23" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="leftf24" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="leftf31" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="leftf32" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftbigfingerseg3" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf12" reason="Adjacent" />
+    <disable_collisions link1="leftf11" link2="leftf13" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf14" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf21" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf22" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf23" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf24" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf31" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf32" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf11" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf11" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="leftf11" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf11" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf11" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf11" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf11" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf11" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf11" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf13" reason="Adjacent" />
+    <disable_collisions link1="leftf12" link2="leftf14" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf21" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf22" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf23" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf24" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf31" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf32" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf12" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf12" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf12" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf12" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf12" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf12" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf12" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf12" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf13" link2="leftf14" reason="Adjacent" />
+    <disable_collisions link1="leftf13" link2="leftf21" reason="Never" />
+    <disable_collisions link1="leftf13" link2="leftf22" reason="Never" />
+    <disable_collisions link1="leftf13" link2="leftf23" reason="Never" />
+    <disable_collisions link1="leftf13" link2="leftf24" reason="Never" />
+    <disable_collisions link1="leftf13" link2="leftf31" reason="Never" />
+    <disable_collisions link1="leftf13" link2="leftf32" reason="Never" />
+    <disable_collisions link1="leftf13" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftf13" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftf13" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf13" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf13" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf13" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf13" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf13" link2="right_palm" reason="Never" />
+    <disable_collisions link1="leftf13" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf13" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf13" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf13" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf13" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf14" link2="leftf21" reason="Never" />
+    <disable_collisions link1="leftf14" link2="leftf22" reason="Never" />
+    <disable_collisions link1="leftf14" link2="leftf23" reason="Never" />
+    <disable_collisions link1="leftf14" link2="leftf24" reason="Never" />
+    <disable_collisions link1="leftf14" link2="leftf31" reason="Never" />
+    <disable_collisions link1="leftf14" link2="leftf32" reason="Never" />
+    <disable_collisions link1="leftf14" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftf14" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftf14" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf14" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf14" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf14" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf14" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf14" link2="right_palm" reason="Never" />
+    <disable_collisions link1="leftf14" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf14" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf14" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf14" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf14" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf21" link2="leftf22" reason="Adjacent" />
+    <disable_collisions link1="leftf21" link2="leftf23" reason="Never" />
+    <disable_collisions link1="leftf21" link2="leftf24" reason="Never" />
+    <disable_collisions link1="leftf21" link2="leftf31" reason="Never" />
+    <disable_collisions link1="leftf21" link2="leftf32" reason="Never" />
+    <disable_collisions link1="leftf21" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftf21" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftf21" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf21" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf21" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf21" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="leftf21" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf21" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf21" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf21" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf21" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf21" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf21" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf21" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf22" link2="leftf23" reason="Adjacent" />
+    <disable_collisions link1="leftf22" link2="leftf24" reason="Never" />
+    <disable_collisions link1="leftf22" link2="leftf31" reason="Never" />
+    <disable_collisions link1="leftf22" link2="leftf32" reason="Never" />
+    <disable_collisions link1="leftf22" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftf22" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftf22" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf22" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf22" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf22" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf22" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf22" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf22" link2="right_palm" reason="Never" />
+    <disable_collisions link1="leftf22" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf22" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf22" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf22" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf22" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf23" link2="leftf24" reason="Adjacent" />
+    <disable_collisions link1="leftf23" link2="leftf31" reason="Never" />
+    <disable_collisions link1="leftf23" link2="leftf32" reason="Never" />
+    <disable_collisions link1="leftf23" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftf23" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftf23" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf23" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf23" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf23" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf23" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf23" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf23" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf23" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf23" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf23" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf23" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf24" link2="leftf31" reason="Never" />
+    <disable_collisions link1="leftf24" link2="leftf32" reason="Never" />
+    <disable_collisions link1="leftf24" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftf24" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftf24" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf24" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf24" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf24" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="leftf24" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf24" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf24" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf24" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf24" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf24" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf24" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf24" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf31" link2="leftf32" reason="Adjacent" />
+    <disable_collisions link1="leftf31" link2="leftf33" reason="Never" />
+    <disable_collisions link1="leftf31" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftf31" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf31" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf31" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf31" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="leftf31" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf31" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf31" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf31" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf31" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf31" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf31" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf31" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf32" link2="leftf33" reason="Adjacent" />
+    <disable_collisions link1="leftf32" link2="leftf34" reason="Never" />
+    <disable_collisions link1="leftf32" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf32" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf32" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf32" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf32" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf32" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf32" link2="right_palm" reason="Never" />
+    <disable_collisions link1="leftf32" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf32" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf32" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf32" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf32" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf33" link2="leftf34" reason="Adjacent" />
+    <disable_collisions link1="leftf33" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf33" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf33" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf33" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf33" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf33" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf33" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf33" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf33" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf33" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf33" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf34" link2="leftf41" reason="Never" />
+    <disable_collisions link1="leftf34" link2="leftf42" reason="Never" />
+    <disable_collisions link1="leftf34" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf34" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf34" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf34" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf34" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf34" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf34" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf34" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf34" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf41" link2="leftf42" reason="Adjacent" />
+    <disable_collisions link1="leftf41" link2="leftf43" reason="Never" />
+    <disable_collisions link1="leftf41" link2="right_arm_link" reason="Never" />
+    <disable_collisions link1="leftf41" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf41" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf41" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf41" link2="right_palm" reason="Never" />
+    <disable_collisions link1="leftf41" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf41" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf41" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf14" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf24" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf41" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf41" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf42" link2="leftf43" reason="Adjacent" />
+    <disable_collisions link1="leftf42" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf42" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf42" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf42" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf42" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf42" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf11" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf13" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf42" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf42" link2="torso_link" reason="Never" />
+    <disable_collisions link1="leftf43" link2="right_elbow" reason="Never" />
+    <disable_collisions link1="leftf43" link2="right_foot" reason="Never" />
+    <disable_collisions link1="leftf43" link2="right_hip" reason="Never" />
+    <disable_collisions link1="leftf43" link2="right_shin" reason="Never" />
+    <disable_collisions link1="leftf43" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="leftf43" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightf12" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightf21" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightf22" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightf23" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightf31" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightf32" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightf33" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightf34" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightf41" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightf42" reason="Never" />
+    <disable_collisions link1="leftf43" link2="rightf43" reason="Never" />
+    <disable_collisions link1="leftf43" link2="torso_link" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="right_elbow" reason="Adjacent" />
+    <disable_collisions link1="right_arm_link" link2="right_foot" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="right_hip" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="right_palm" reason="Adjacent" />
+    <disable_collisions link1="right_arm_link" link2="right_shin" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf11" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf12" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf13" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf14" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf21" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf22" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf23" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf24" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf31" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf32" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf33" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf34" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf41" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf42" reason="Never" />
+    <disable_collisions link1="right_arm_link" link2="rightf43" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="right_foot" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="right_hip" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="right_palm" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="right_shin" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="right_upper_forearm" reason="Adjacent" />
+    <disable_collisions link1="right_elbow" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf11" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf12" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf13" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf14" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf21" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf22" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf23" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf24" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf31" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf32" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf33" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf34" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf41" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf42" reason="Never" />
+    <disable_collisions link1="right_elbow" link2="rightf43" reason="Never" />
+    <disable_collisions link1="right_foot" link2="right_hip" reason="Never" />
+    <disable_collisions link1="right_foot" link2="right_palm" reason="Never" />
+    <disable_collisions link1="right_foot" link2="right_shin" reason="Adjacent" />
+    <disable_collisions link1="right_foot" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="right_foot" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf11" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf12" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf13" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf14" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf21" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf22" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf23" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf24" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf31" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf32" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf33" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf34" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf41" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf42" reason="Never" />
+    <disable_collisions link1="right_foot" link2="rightf43" reason="Never" />
+    <disable_collisions link1="right_foot" link2="torso_link" reason="Never" />
+    <disable_collisions link1="right_hip" link2="right_palm" reason="Never" />
+    <disable_collisions link1="right_hip" link2="right_shin" reason="Adjacent" />
+    <disable_collisions link1="right_hip" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="right_hip" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf11" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf12" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf13" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf14" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf21" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf22" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf23" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf24" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf31" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf32" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf33" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf34" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf41" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf42" reason="Never" />
+    <disable_collisions link1="right_hip" link2="rightf43" reason="Never" />
+    <disable_collisions link1="right_hip" link2="torso_link" reason="Never" />
+    <disable_collisions link1="right_palm" link2="right_shin" reason="Never" />
+    <disable_collisions link1="right_palm" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="right_palm" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightbigfingerseg1" reason="Adjacent" />
+    <disable_collisions link1="right_palm" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightf11" reason="Adjacent" />
+    <disable_collisions link1="right_palm" link2="rightf12" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightf13" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightf14" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightf21" reason="Adjacent" />
+    <disable_collisions link1="right_palm" link2="rightf22" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightf23" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightf24" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightf31" reason="Adjacent" />
+    <disable_collisions link1="right_palm" link2="rightf32" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightf33" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightf34" reason="Never" />
+    <disable_collisions link1="right_palm" link2="rightf41" reason="Adjacent" />
+    <disable_collisions link1="right_palm" link2="rightf43" reason="Never" />
+    <disable_collisions link1="right_shin" link2="right_shoulder" reason="Never" />
+    <disable_collisions link1="right_shin" link2="right_upper_forearm" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf11" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf12" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf13" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf14" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf21" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf22" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf23" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf24" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf31" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf32" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf33" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf34" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf41" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf42" reason="Never" />
+    <disable_collisions link1="right_shin" link2="rightf43" reason="Never" />
+    <disable_collisions link1="right_shin" link2="torso_link" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="right_upper_forearm" reason="Adjacent" />
+    <disable_collisions link1="right_shoulder" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf11" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf12" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf13" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf14" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf21" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf22" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf23" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf24" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf31" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf32" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf33" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf34" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf41" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf42" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="rightf43" reason="Never" />
+    <disable_collisions link1="right_shoulder" link2="torso_link" reason="Adjacent" />
+    <disable_collisions link1="right_upper_forearm" link2="rightbigfingerseg1" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightbigfingerseg2" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf11" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf12" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf13" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf14" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf21" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf22" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf23" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf24" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf31" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf32" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf33" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf34" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf41" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf42" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="rightf43" reason="Never" />
+    <disable_collisions link1="right_upper_forearm" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightbigfingerseg2" reason="Adjacent" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightbigfingerseg3" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf11" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf12" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf13" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf14" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf21" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf22" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf23" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf24" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf31" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf32" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg1" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightbigfingerseg3" reason="Adjacent" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf11" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf12" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf13" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf14" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf21" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf22" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf23" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf24" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf31" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf32" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg2" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf11" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf12" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf13" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf14" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf21" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf22" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf23" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf24" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf31" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf32" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightbigfingerseg3" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf12" reason="Adjacent" />
+    <disable_collisions link1="rightf11" link2="rightf13" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf14" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf21" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf22" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf23" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf24" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf31" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf32" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf11" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf11" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf13" reason="Adjacent" />
+    <disable_collisions link1="rightf12" link2="rightf14" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf21" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf22" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf23" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf24" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf31" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf32" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf12" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf12" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf13" link2="rightf14" reason="Adjacent" />
+    <disable_collisions link1="rightf13" link2="rightf21" reason="Never" />
+    <disable_collisions link1="rightf13" link2="rightf22" reason="Never" />
+    <disable_collisions link1="rightf13" link2="rightf23" reason="Never" />
+    <disable_collisions link1="rightf13" link2="rightf24" reason="Never" />
+    <disable_collisions link1="rightf13" link2="rightf31" reason="Never" />
+    <disable_collisions link1="rightf13" link2="rightf32" reason="Never" />
+    <disable_collisions link1="rightf13" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightf13" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightf13" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf13" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf13" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf13" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf14" link2="rightf21" reason="Never" />
+    <disable_collisions link1="rightf14" link2="rightf22" reason="Never" />
+    <disable_collisions link1="rightf14" link2="rightf23" reason="Never" />
+    <disable_collisions link1="rightf14" link2="rightf24" reason="Never" />
+    <disable_collisions link1="rightf14" link2="rightf31" reason="Never" />
+    <disable_collisions link1="rightf14" link2="rightf32" reason="Never" />
+    <disable_collisions link1="rightf14" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightf14" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightf14" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf14" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf14" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf14" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf21" link2="rightf22" reason="Adjacent" />
+    <disable_collisions link1="rightf21" link2="rightf23" reason="Never" />
+    <disable_collisions link1="rightf21" link2="rightf24" reason="Never" />
+    <disable_collisions link1="rightf21" link2="rightf31" reason="Never" />
+    <disable_collisions link1="rightf21" link2="rightf32" reason="Never" />
+    <disable_collisions link1="rightf21" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightf21" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightf21" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf21" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf21" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf21" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf22" link2="rightf23" reason="Adjacent" />
+    <disable_collisions link1="rightf22" link2="rightf24" reason="Never" />
+    <disable_collisions link1="rightf22" link2="rightf31" reason="Never" />
+    <disable_collisions link1="rightf22" link2="rightf32" reason="Never" />
+    <disable_collisions link1="rightf22" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightf22" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightf22" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf22" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf22" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf22" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf23" link2="rightf24" reason="Adjacent" />
+    <disable_collisions link1="rightf23" link2="rightf31" reason="Never" />
+    <disable_collisions link1="rightf23" link2="rightf32" reason="Never" />
+    <disable_collisions link1="rightf23" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightf23" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightf23" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf23" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf23" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf23" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf24" link2="rightf31" reason="Never" />
+    <disable_collisions link1="rightf24" link2="rightf32" reason="Never" />
+    <disable_collisions link1="rightf24" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightf24" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightf24" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf24" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf24" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf24" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf31" link2="rightf32" reason="Adjacent" />
+    <disable_collisions link1="rightf31" link2="rightf33" reason="Never" />
+    <disable_collisions link1="rightf31" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightf31" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf31" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf31" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf31" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf32" link2="rightf33" reason="Adjacent" />
+    <disable_collisions link1="rightf32" link2="rightf34" reason="Never" />
+    <disable_collisions link1="rightf32" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf32" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf32" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf32" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf33" link2="rightf34" reason="Adjacent" />
+    <disable_collisions link1="rightf33" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf33" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf33" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf33" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf34" link2="rightf41" reason="Never" />
+    <disable_collisions link1="rightf34" link2="rightf42" reason="Never" />
+    <disable_collisions link1="rightf34" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf34" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf41" link2="rightf42" reason="Adjacent" />
+    <disable_collisions link1="rightf41" link2="rightf43" reason="Never" />
+    <disable_collisions link1="rightf41" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf42" link2="rightf43" reason="Adjacent" />
+    <disable_collisions link1="rightf42" link2="torso_link" reason="Never" />
+    <disable_collisions link1="rightf43" link2="torso_link" reason="Never" />
+</robot>

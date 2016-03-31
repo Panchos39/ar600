@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.68.0 r58537</authoring_tool>
+    </contributor>
+    <created>2014-01-25T19:58:16</created>
+    <modified>2014-01-25T19:58:16</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_effects/>
+  <library_geometries>
+    <geometry id="_ï__ï___AR-600_015-mesh" name="_ï¿½ï¿½_AR-600.015">
+      <mesh>
+        <source id="_ï__ï___AR-600_015-mesh-positions">
+          <float_array id="_ï__ï___AR-600_015-mesh-positions-array" count="60">0.08640575 -0.05000108 0 0.08640587 -0.04045194 0.02938926 0.08640617 -0.0154519 0.04755282 0.08640658 0.0154497 0.04755282 0.08640688 0.04044973 0.02938926 0.08640706 0.04999887 0 0.08640694 0.04044973 -0.02938926 0.08640664 0.0154497 -0.04755282 0.08640623 -0.0154519 -0.04755282 0.08640593 -0.04045194 -0.0293892 -0.003465771 -0.04999995 0 -0.02309662 -0.04045051 0.02938926 -0.03665667 -0.01545035 0.04755282 -0.03665632 0.01545131 0.04755282 -0.0230956 0.0404511 0.02938926 -0.00346446 0.05000001 0 -0.003464579 0.04045087 -0.02938926 -0.003464877 0.01545089 -0.04755282 -0.003465294 -0.01545077 -0.04755282 -0.003465592 -0.04045081 -0.0293892</float_array>
+          <technique_common>
+            <accessor source="#_ï__ï___AR-600_015-mesh-positions-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_ï__ï___AR-600_015-mesh-normals">
+          <float_array id="_ï__ï___AR-600_015-mesh-normals-array" count="108">-1.21144e-5 -0.9510565 0.309017 -7.51389e-6 -0.5877851 0.8090171 1.21703e-5 0.9510566 -0.3090167 0 0 1 7.5307e-6 0.5877853 -0.809017 7.52436e-6 0.5877855 0.8090169 0 -1.20553e-7 -1 1.21354e-5 0.9510566 0.3090167 -7.51758e-6 -0.5877854 -0.809017 -1.2176e-5 -0.9510565 -0.3090169 -1 1.28604e-5 -8.82934e-7 0.8013172 -1.01676e-5 0.5982398 0.8315517 -1.06448e-5 0.5554475 1 -1.27579e-5 6.87308e-7 1 -1.27937e-5 5.42086e-7 -1.21411e-5 -0.9510565 0.3090171 -7.45395e-6 -0.5877854 0.809017 1.21409e-5 0.9510566 -0.3090168 0 0 1 7.51869e-6 0.5877853 -0.809017 7.52252e-6 0.5877855 0.8090168 0 -1.20553e-7 -1 1.21485e-5 0.9510567 0.3090168 -7.54622e-6 -0.5877852 -0.8090171 -1.21431e-5 -0.9510566 -0.3090168 -1 1.30197e-5 -9.98648e-7 -1 1.27774e-5 -6.65133e-7 -1 1.26808e-5 -5.94933e-7 -1 1.24397e-5 -5.16593e-7 -1 1.23782e-5 -2.19218e-7 -1 1.27786e-5 -5.10118e-7 -1 1.31675e-5 -1.04541e-6 0.8013173 -1.02577e-5 0.5982395 0.8315516 -1.06011e-5 0.5554475 1 -1.27801e-5 6.19151e-7 1 -1.27579e-5 6.52102e-7</float_array>
+          <technique_common>
+            <accessor source="#_ï__ï___AR-600_015-mesh-normals-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="_ï__ï___AR-600_015-mesh-vertices">
+          <input semantic="POSITION" source="#_ï__ï___AR-600_015-mesh-positions"/>
+        </vertices>
+        <polylist count="36">
+          <input semantic="VERTEX" source="#_ï__ï___AR-600_015-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#_ï__ï___AR-600_015-mesh-normals" offset="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>6 0 5 0 16 0 7 1 6 1 17 1 1 2 0 2 11 2 8 3 7 3 18 3 2 4 1 4 12 4 9 5 8 5 19 5 3 6 2 6 13 6 0 7 9 7 10 7 4 8 3 8 13 8 5 9 4 9 14 9 7 10 5 10 6 10 13 11 12 11 14 11 14 12 11 12 15 12 19 13 16 13 10 13 18 14 17 14 19 14 5 15 15 15 16 15 6 16 16 16 17 16 0 17 10 17 11 17 7 18 17 18 18 18 1 19 11 19 12 19 8 20 18 20 19 20 2 21 12 21 13 21 9 22 19 22 10 22 14 23 4 23 13 23 15 24 5 24 14 24 8 25 5 25 7 25 8 26 4 26 5 26 8 27 3 27 4 27 9 28 3 28 8 28 1 29 2 29 0 29 2 30 3 30 0 30 3 31 9 31 0 31 12 32 11 32 14 32 11 33 10 33 15 33 16 34 15 34 10 34 17 35 16 35 19 35</p>
+        </polylist>
+      </mesh>
+      <extra><technique profile="MAYA"><double_sided>1</double_sided></technique></extra>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="upperarm_low" name="upperarm_low" type="NODE">
+        <matrix sid="transform">1 0 0 -7.45058e-9 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#_ï__ï___AR-600_015-mesh"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

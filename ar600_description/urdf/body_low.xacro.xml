@@ -1,0 +1,124 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ar600">
+
+<!-- 	<xacro:macro name="box_shape" params="size">
+		<geometry>
+			<box size="${size}"/>	
+		</geometry>		
+	</xacro:macro> -->
+
+<!-- 	<xacro:macro name="cylinder_shape" params="radius length">
+		<geometry>
+			<cylinder radius="${radius}" length="${length}"/>	
+		</geometry>		
+	</xacro:macro> -->
+
+
+	<xacro:macro name="white_material">
+				<material name="white">
+					<color rgba="1 1 1 1"/>
+				</material>
+	</xacro:macro>
+
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://ar600_description/meshes/base_low.dae"/>
+			</geometry>
+					
+		</visual>
+		<inertial>
+			<mass value="10"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>	
+		<collision>
+			<geometry>
+				<mesh filename="package://ar600_description/meshes/phys_model/phys_base.dae"/>
+			</geometry>			
+		</collision>
+	</link>
+
+
+	<link name="torso">
+		<visual>
+			<geometry>
+				<mesh filename="package://ar600_description/meshes/body_low.dae"/>
+			</geometry>		
+			<xacro:white_material/>
+	</visual>	
+		<inertial>
+			<mass value="10"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>			
+		<collision>
+			<geometry>
+				<mesh filename="package://ar600_description/meshes/body_low.dae"/>
+			</geometry>		
+		</collision>	
+	</link>
+
+
+	<link name="head_mount">
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>			
+
+	</link>
+
+	<link name="head">
+		<visual>
+			<geometry>
+				<mesh filename="package://ar600_description/meshes/head_low.dae"/>
+			</geometry>					
+			<xacro:white_material/>
+		</visual>
+		<inertial>
+			<mass value="10"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>			
+		<collision>
+			<geometry>
+				<mesh filename="package://ar600_description/meshes/head_low.dae"/>
+			</geometry>					
+			<xacro:white_material/>
+		</collision>		
+	</link>
+
+	<joint name="base_torso" type="continuous">
+		<parent link="base_link"/>
+		<child link="torso"/>
+		<origin xyz="0.05 0 0" rpy="0 0 0"/>
+		<limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+		<axis xyz="0 0 1"/>
+		<dynamics damping="0.7"/>
+	</joint>
+
+
+	<joint name="torso_head_mount" type="revolute">
+		<parent link="torso"/>
+		<child link="head_mount"/>
+		<origin xyz="-0.05 0 .34" rpy="0 0 0"/>
+		<limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+		<axis xyz="0 0 1"/>	
+		<dynamics damping="0.7"/>	
+	</joint>
+
+	<joint name="head_mount_head" type="revolute">
+		<parent link="head_mount"/>
+		<child link="head"/>
+		<limit effort="1000.0" lower="-.5" upper=".5" velocity="0.5"/>
+		<axis xyz="0 1 0"/>
+		<dynamics damping="0.7"/>
+	</joint>
+
+	<transmission name="tran1">
+		<type>transmission_interface/SimpleTransmission</type>
+    	<joint name="base_torso"/>
+    	<actuator name="motor1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+  	</transmission>
+
+
+</robot>

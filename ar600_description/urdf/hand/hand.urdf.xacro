@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	
+	<xacro:include filename="$(find ar600_description)/urdf/hand/hand.gazebo.xacro" />
+  	<xacro:include filename="$(find ar600_description)/urdf/hand/hand.transmission.xacro" />
+
+
+	<xacro:macro name="ar600_hand_macro" params="parent side reflect *origin">
+		
+		<link name="${side}_shoulder">
+			<visual>
+				<geometry>				
+					<mesh filename="package://ar600_description/meshes/${side}_shoulder_low.dae"/>
+				</geometry>
+			</visual>		
+			<inertial>
+				<mass value="1"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					 		   iyy="1.0" iyz="0.0" 
+					 		   			 izz="1.0"/>
+			</inertial>			
+		</link>
+
+		<link name="${side}_upper_forearm">
+			<visual>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/${side}_upper_arm_high.dae"/>
+				</geometry>					
+			</visual>
+			<inertial>
+				<mass value="4"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					 	       iyy="1.0" iyz="0.0" 
+					 	       			 izz="1.0"/>
+			</inertial>			
+		
+			<collision>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/phys_model/forearm.stl"/>
+				</geometry>		
+			</collision>	
+		</link>
+
+
+		<link name="${side}_elbow">
+			<visual>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/elbow_low.dae"/>
+				</geometry>							
+			</visual>
+			<inertial>
+				<mass value="1"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					 		   iyy="1.0" iyz="0.0" 
+					 		             izz="1.0"/>
+			</inertial>			
+		
+			<collision>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/phys_model/elbow.stl"/>
+				</geometry>		
+			</collision>	
+		</link>
+
+		<link name="${side}_arm_link">
+			<visual>			
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/${side}_arm.dae"/>
+				</geometry>					
+			</visual>
+			<inertial>
+				<mass value="3"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					 		   iyy="1.0" iyz="0.0" 
+					 		             izz="1.0"/>
+			</inertial>					
+			<collision>
+				<geometry>
+					<mesh filename="package://ar600_description/meshes/phys_model/arm.stl"/>
+				</geometry>		
+			</collision>	
+		</link>
+
+		<link name="${side}_hand_effector_link">
+			<inertial>
+				<mass value=".1"/>
+				<inertia 
+					 ixx="1.0" ixy="0.0" ixz="0.0" 
+					 		   iyy="1.0" iyz="0.0" 
+					 		   			 izz="1.0"/>
+			</inertial>					
+		</link>
+
+		<joint name="torso_${side}_shoulder" type="revolute">
+			<parent link="${parent}_link"/>
+			<child link="${side}_shoulder"/>
+			<xacro:insert_block name="origin"/>
+			<limit effort="1000.0" lower="0" upper="3.14" velocity="0.5"/>
+			<axis xyz="0 -1 0"/>
+			<dynamics damping="0.7" />
+		</joint>
+
+		<joint name="${side}_upper_forearm_shoulder" type="revolute">
+			<parent link="${side}_shoulder"/>
+			<child link="${side}_upper_forearm"/>
+			<origin xyz="0 ${.055*reflect} 0" rpy="-1.57 0 1.57"/>
+			<limit effort="1000.0" lower="0.0" upper="1.57" velocity="0.5"/>
+			<axis xyz="0 ${-1 * reflect} 0"/>
+			<dynamics damping="0.7" />
+		</joint>
+
+		<joint name="${side}_upper_forearm_${side}_lower_forearm" type="revolute">
+			<parent link="${side}_upper_forearm"/>
+			<child link="${side}_elbow"/>
+			<origin xyz="0 0 -0.12" rpy="0 0 0"/>
+			<limit effort="1000.0" lower="${-1.57}" upper="${1.57}" velocity="0.5"/>
+			<axis xyz="0 0 ${reflect}"/>
+			<dynamics damping="0.7" />
+		</joint>
+
+		<joint name="${side}_lower_forearm_arm" type="revolute">
+			<parent link="${side}_elbow"/>
+			<child link="${side}_arm_link"/>
+			<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+			<limit effort="1000.0" lower="0" upper="1.57" velocity="0.5"/>
+			<axis xyz="-1 0 0"/>
+			<dynamics damping="0.7" />
+		</joint>
+
+		<joint name="${side}_lower_arm_effector" type="revolute">
+			<parent link="${side}_arm_link"/>
+			<child link="${side}_hand_effector_link"/>			
+			<limit effort="1000.0" lower="-0.707" upper="0.707" velocity="0.5"/>
+			<origin xyz="0.005 0.005 -0.21" rpy="0 0 0"/>
+			<axis xyz="0 0 -1"/>
+			<dynamics damping="0.7" />	
+		</joint>
+		<xacro:shoulder_transmission_macro side="${side}"/>
+		<xacro:upper_forearm_shoulder_transmission_macro side="${side}"/>
+		<xacro:upper_forearm_lower_forearm_transmission_macro side="${side}"/>
+		<xacro:elbow_transmission_macro side="${side}"/>
+		<xacro:arm_transmission_macro side="${side}"/>
+	</xacro:macro>
+</robot>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ar600">
+
+	<!-- <xacro:macro name="default_inertial" params="mass">
+		<inertial>
+			<mass value="${mass}" />
+            	<inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                	iyy="1.0" iyz="0.0"
+                    	izz="1.0" />
+		</inertial>
+	</xacro:macro> -->
+	
+	<xacro:include filename="ar.gazebo"/>
+
+	<xacro:include filename="low_leg.xacro.xml"/>	
+	<xacro:include filename="low_hand.xacro.xml"/>
+	<xacro:include filename="low_palm.xacro.xml"/>			
+	<xacro:include filename="body_low.xacro.xml"/>
+	<!-- <xacro:include filename="low_finger.xacro.xml"/> -->
+ 
+</robot>

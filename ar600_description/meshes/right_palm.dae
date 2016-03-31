@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.69.0 r60991</authoring_tool>
+    </contributor>
+    <created>2014-05-04T23:25:14</created>
+    <modified>2014-05-04T23:25:14</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_effects/>
+  <library_geometries>
+    <geometry id="Grid_024-mesh" name="Grid.024">
+      <mesh>
+        <source id="Grid_024-mesh-positions">
+          <float_array id="Grid_024-mesh-positions-array" count="48">-0.03611624 0.02625 0 0.004370868 0.02625 0 0.04237443 0.02624994 0 -0.03611624 -0.003749966 0 0.004370868 -0.003749966 0 0.04237443 -0.003749966 0 -0.02562904 -0.03374999 0 0.004370868 -0.03374999 0 -0.03611624 0.02625 -0.08196181 0.004370927 0.02625 -0.08196181 0.04237443 0.02624994 -0.08196175 -0.03611624 -0.003749966 -0.08196181 0.004370868 -0.003749966 -0.08196181 0.04237443 -0.003749966 -0.08196175 -0.02562904 -0.03374999 -0.05091756 0.004370868 -0.03374999 -0.05091756</float_array>
+          <technique_common>
+            <accessor source="#Grid_024-mesh-positions-array" count="16" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Grid_024-mesh-normals">
+          <float_array id="Grid_024-mesh-normals-array" count="84">1.24176e-7 1 0 -1 1.5522e-7 -1.36355e-7 0.9439839 0.3299914 1.22906e-7 -3.92099e-7 0 1 -1.84023e-7 0 1 0 0.7190976 0.694909 1 -1.24176e-7 1.36355e-7 -1 1.24176e-7 -1.36355e-7 1.47037e-7 1 0 -1.47037e-7 -1 0 -1.38017e-7 -1 0 4.13264e-7 0 -1 1.24176e-7 1 0 -1 -4.46696e-7 -3.5667e-7 0.9439837 0.3299919 3.45324e-7 -3.92099e-7 0 1 -1.84023e-7 0 1 -1.69579e-7 0.7190976 0.6949092 1 -1.24176e-7 1.36355e-7 -1 1.24176e-7 -1.36355e-7 1.47037e-7 1 0 -1.47037e-7 -1 0 -1.38017e-7 -1 0 2.47551e-7 1.65713e-7 -1 2.78531e-7 0 -1 2.78531e-7 0 -1 2.47551e-7 0 -1 2.47551e-7 0 -1</float_array>
+          <technique_common>
+            <accessor source="#Grid_024-mesh-normals-array" count="28" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Grid_024-mesh-vertices">
+          <input semantic="POSITION" source="#Grid_024-mesh-positions"/>
+        </vertices>
+        <polylist count="28">
+          <input semantic="VERTEX" source="#Grid_024-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Grid_024-mesh-normals" offset="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>6 0 7 0 14 0 7 1 4 1 12 1 3 2 6 2 11 2 10 3 9 3 13 3 9 4 8 4 12 4 12 5 11 5 15 5 0 6 3 6 8 6 5 7 2 7 13 7 4 8 5 8 12 8 2 9 1 9 10 9 1 10 0 10 9 10 6 11 4 11 7 11 7 12 15 12 14 12 15 13 7 13 12 13 6 14 14 14 11 14 9 15 12 15 13 15 8 16 11 16 12 16 11 17 14 17 15 17 3 18 11 18 8 18 2 19 10 19 13 19 5 20 13 20 12 20 1 21 9 21 10 21 0 22 8 22 9 22 6 23 3 23 4 23 4 24 2 24 5 24 4 25 1 25 2 25 3 26 0 26 4 26 0 27 1 27 4 27</p>
+        </polylist>
+      </mesh>
+      <extra><technique profile="MAYA"><double_sided>1</double_sided></technique></extra>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="right_palm_phys" name="right_palm_phys" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Grid_024-mesh"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
