@@ -14,11 +14,23 @@
 		right_lower_arm_effector_position_controller
 
 		base_left_leg_joint_position_controller
+		base_right_leg_joint_position_controller
 		left_base_mount_position_controller
+		right_base_mount_position_controller
 		left_base_mount_hip_position_controller
+		right_base_mount_hip_position_controller
 		left_hip_left_shin_position_controller
+		right_hip_right_shin_position_controller
 		left_shin_left_foot_mount_position_controller
+		right_shin_right_foot_mount_position_controller
 		left_shin_mount_left_foot_position_controller
+		right_shin_mount_right_foot_position_controller
+
+		torso_rotation_joint_position_controller
+
+		torso_head_mount_position_controller
+		mount_head_tilt_mount_position_controller
+		head_mount_head_position_controller
 		
 		joint_state_controller"/>
 

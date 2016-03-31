@@ -3,48 +3,43 @@
   <xacro:macro name="ar600_head_transmission">
     
     <transmission name="head_mount_transmission">
-      <!-- <actuator name="torso_rotation_motor" /> -->
-      <joint name="torso_head_mount" />
-      <type>
-      	transmission_interface/SimpleTransmission
-      </type>
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="torso_head_mount">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </joint>
       <actuator name="head_mount_joint_actuator">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
         <motorTorqueConstant>10</motorTorqueConstant>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
       </actuator>
       <!-- <mechanicalReduction>${-1 * 624/35 * 80/18}</mechanicalReduction> -->
     </transmission>
 
 	<transmission name="mount_head_tilt_mount_transmission">
-      <!-- <actuator name="torso_rotation_motor" /> -->
-      <joint name="mount_head_tilt_mount" />
-      <type>
-      	transmission_interface/SimpleTransmission
-      </type>
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="mount_head_tilt_mount">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>  
+      </joint>
       <actuator name="mount_head_tilt_mount_joint_actuator">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
         <motorTorqueConstant>10</motorTorqueConstant>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
       </actuator>
       <!-- <mechanicalReduction>${-1 * 624/35 * 80/18}</mechanicalReduction> -->
     </transmission>
 
 	<transmission name="head_mount_head_transmission">
-      <!-- <actuator name="torso_rotation_motor" /> -->
-      <joint name="head_mount_head" />
-      <type>
-      	transmission_interface/SimpleTransmission
-      </type>
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="head_mount_head">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </joint>
       <actuator name="head_mount_head_joint_actuator">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
         <motorTorqueConstant>10</motorTorqueConstant>
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
       </actuator>
       <!-- <mechanicalReduction>${-1 * 624/35 * 80/18}</mechanicalReduction> -->
     </transmission>
-    
   </xacro:macro>
-
 
 </robot>

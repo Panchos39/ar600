@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 	
   	<xacro:include filename="$(find ar600_description)/urdf/base/base.gazebo.xacro" />
-  	<!--<xacro:include filename="$(find ar600_description)/urdf/base/base.transmission.xacro" />-->
+  	<xacro:include filename="$(find ar600_description)/urdf/base/base.transmission.xacro" />
 
 	<xacro:macro name="ar600_body_macro" params="name">
 		<link name="${name}_link">		
@@ -58,7 +58,7 @@
 
 		<xacro:ar600_base_gazebo name="${name}"/>
 		<xacro:ar600_torso_gazebo name="${name}"/>
-    	<!--<xacro:ar600_base_torso_transmission/>-->
+    	<xacro:ar600_base_torso_transmission/>
 	</xacro:macro>
 
 </robot>

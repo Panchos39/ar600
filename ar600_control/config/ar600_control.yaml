@@ -98,38 +98,59 @@ ar600:
     pid: {p: 100.0, i: 0.01, d: 10.0}
 
 # Right leg
-  #base_right_leg_joint_position_controller:
-   # type: effort_controllers/JointPositionController
-    #joint: base_right_leg_joint
-    #pid: {p: 100.0, i: 0.01, d: 10.0}
+  base_right_leg_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: base_right_leg_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
 
-  #right_base_mount_position_controller:
-   # type: effort_controllers/JointPositionController
-    #joint: right_base_mount
-    #pid: {p: 100.0, i: 0.01, d: 10.0}
+  right_base_mount_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: right_base_mount
+    pid: {p: 100.0, i: 0.01, d: 10.0}
 
 
-  #right_base_mount_hip_position_controller:
-   # type: effort_controllers/JointPositionController
-    #joint: right_base_mount_hip
-    #pid: {p: 100.0, i: 0.01, d: 10.0}
+  right_base_mount_hip_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: right_base_mount_hip
+    pid: {p: 100.0, i: 0.01, d: 10.0}
 
-  #right_hip_right_shin_position_controller:
-   # type: effort_controllers/JointPositionController
-    #joint: right_hip_right_shin
-    #pid: {p: 100.0, i: 0.01, d: 10.0}
+  right_hip_right_shin_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: right_hip_right_shin
+    pid: {p: 100.0, i: 0.01, d: 10.0}
 
- # right_shin_right_foot_mount_position_controller:
-  #  type: effort_controllers/JointPositionController
-   # joint: right_shin_right_foot_mount
-    #pid: {p: 100.0, i: 0.01, d: 10.0}
+  right_shin_right_foot_mount_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: right_shin_right_foot_mount
+    pid: {p: 100.0, i: 0.01, d: 10.0}
 
-  #right_shin_mount_right_foot_position_controller:
-   # type: effort_controllers/JointPositionController
-    #joint: right_shin_mount_right_foot
-    #pid: {p: 100.0, i: 0.01, d: 10.0}
+  right_shin_mount_right_foot_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: right_shin_mount_right_foot
+    pid: {p: 100.0, i: 0.01, d: 10.0}
 
 
   # Torso
 
-  
+  torso_rotation_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: torso_rotation_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+
+  # Head
+
+  torso_head_mount_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: torso_head_mount
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  mount_head_tilt_mount_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: mount_head_tilt_mount
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  head_mount_head_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: head_mount_head
+    pid: {p: 100.0, i: 0.01, d: 10.0}
